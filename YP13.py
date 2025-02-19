@@ -22,11 +22,18 @@ age INTEGER
 #cursor.execute("INSERT INTO Users (username, email, age) VALUES (?, ?, ?)", ("newuser", "newuser@example.com", 28))
 
 #Выполнение запросов
-cursor.execute("SELECT * FROM Users")
-users = cursor.fetchall()
+#cursor.execute("SELECT * FROM Users")
+#users = cursor.fetchall()
 #Выводим результат
-for user in users:
-    print(user)
+#for user in users:
+#    print(user)
+
+#Выбираем имена и возраст пользователей старше 25 лет
+cursor.execute("SELECT username, age FROM Users WHERE age > ?", (25,))
+results = cursor.fetchall()
+
+for row in results:
+    print(row)
 
 
 #Сохранение и закрываем соединение
