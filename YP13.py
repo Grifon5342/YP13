@@ -95,6 +95,13 @@ oldest_users = cursor.fetchall()
 for user in oldest_users:
     print(user)
 
+#Выбираем всех пользователей
+cursor.execute("SELECT * FROM Users")
+users = cursor.fetchall()
+for user in users:
+    print(user)
+
+
 
 #Сохранение и закрываем соединение
 connection.commit()
