@@ -136,6 +136,13 @@ users_list.append(user_dict)
 for user in users_list:
     print(user)
 #---------------------------------------------------------------------
+#Выбираем пользователей с неизвестным возрастом
+cursor.execute("SELECT * FROM Users WHERE age IS NULL")
+unknown_age_users = cursor.fetchall()
+
+#Результат
+for user in unknown_age_users:
+    print(user)
 #Сохранение и закрываем соединение
 connection.commit()
 connection.close()
