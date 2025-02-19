@@ -136,6 +136,7 @@ users_list.append(user_dict)
 for user in users_list:
     print(user)
 #---------------------------------------------------------------------
+#NULL - Значения
 #Выбираем пользователей с неизвестным возрастом
 cursor.execute("SELECT * FROM Users WHERE age IS NULL")
 unknown_age_users = cursor.fetchall()
@@ -143,6 +144,20 @@ unknown_age_users = cursor.fetchall()
 #Результат
 for user in unknown_age_users:
     print(user)
+#-----------------------------------------------------------------------------
+#Транзакции и упраления данными
+try:
+    #Начинаем транзакцию
+    cursor.execute("BEGIN")
+    #Выполняем оперцию
+    cursor.execute("INSERT INTO Users (username, email) VALUES (?, ?)", ("user1", "user1@example.com"))
+    cursor.execute("INSERT INTO Users (username, email) VALUES (?, ?)", ("user2", "user2@example.com"))
+    #Подтверждаем изменения
+    cursor.execute("COMMIT")
+except:
+    #Отменяем транзакцию в случае ошибки
+    cursor.execute("ROLLBACK")
+    
 #Сохранение и закрываем соединение
 connection.commit()
 connection.close()
