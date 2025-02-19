@@ -13,7 +13,8 @@ email TEXT NOT NULL,
 age INTEGER
 )
 """)
+#Создание индекса для столбца "email"
+cursor.execute("CREATE INDEX idx_email ON Users (email)")
 #Сохранение и закрываем соединение
 connection.commit()
 connection.close()
-print(1)
