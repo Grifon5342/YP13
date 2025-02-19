@@ -19,7 +19,13 @@ age INTEGER
 
 
 #Дабовление нового пользователя
-#cursor.execute("INSERT INTO Users (username, email, age) VALUES (?, ?, ?)", ("newuser", "newuser@example.com", 28))
+cursor.execute("INSERT INTO Users (username, email, age) VALUES (?, ?, ?)", ("newuser", "newuser@example.com", 28))
+
+#Обновление записей
+cursor.execute("UPDATE Users SET age = ? WHERE username = ?", (29, "newuser"))
+
+#Удвление записей
+cursor.execute("DELETE FROM Users WHERE username = ?", ("newuser",))
 
 #Выполнение запросов
 #cursor.execute("SELECT * FROM Users")
@@ -29,11 +35,11 @@ age INTEGER
 #    print(user)
 
 #Выбираем имена и возраст пользователей старше 25 лет
-cursor.execute("SELECT username, age FROM Users WHERE age > ?", (25,))
-results = cursor.fetchall()
+#cursor.execute("SELECT username, age FROM Users WHERE age > ?", (25,))
+#results = cursor.fetchall()
 
-for row in results:
-    print(row)
+#for row in results:
+#    print(row)
 
 
 #Сохранение и закрываем соединение
