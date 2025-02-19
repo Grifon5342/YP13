@@ -19,7 +19,14 @@ age INTEGER
 
 
 #Дабовление нового пользователя
-cursor.execute("INSERT INTO Users (username, email, age) VALUES (?, ?, ?)", ("newuser", "newuser@example.com", 28))
+#cursor.execute("INSERT INTO Users (username, email, age) VALUES (?, ?, ?)", ("newuser", "newuser@example.com", 28))
+
+#Выполнение запросов
+cursor.execute("SELECT * FROM Users")
+users = cursor.fetchall()
+#Выводим результат
+for user in users:
+    print(user)
 
 
 #Сохранение и закрываем соединение
