@@ -84,6 +84,17 @@ max_age = cursor.fetchone()[0]
 
 print("Максимальный возраст среди пользователей:", max_age)
 
+#Нахождение пользователей с наибольшим возрастом
+cursor.execute("""
+SELECT username, age
+FROM Users
+WHERE age = (SELECT MAX(age) FROM Users)
+""")
+oldest_users = cursor.fetchall()
+
+for user in oldest_users:
+    print(user)
+
 
 #Сохранение и закрываем соединение
 connection.commit()
